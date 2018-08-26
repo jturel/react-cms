@@ -1,11 +1,19 @@
-import {withRouter} from 'next/router'
 import Layout from '../components/Layout.js'
 
-const Post = withRouter((props) => (
+const Post = ({post}) => (
   <Layout>
-    <h1>{props.router.query.title}</h1>
-    <p>something goes here</p>
+    <h1>{post.title}</h1>
+    <p>{post.body}</p>
   </Layout>
-))
+)
+
+Post.getInitialProps =  async function({query}) {
+  const response = await fetch(`http://localhost:3001/api/v1/posts/${query.id}`)
+  const post = await response.json()
+
+  return {
+    post: post
+  }
+}
 
 export default Post
