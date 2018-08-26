@@ -1,5 +1,9 @@
+import Layout from '../components/Layout'
+
 export default () => (
-  <div>
-    this is the about section
-  </div>
+  <Layout>
+    <div>
+      this is the about section
+    </div>
+  </Layout>
 )
