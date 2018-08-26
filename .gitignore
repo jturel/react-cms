@@ -29,4 +29,4 @@
 
 /client/node_modules/*
 /client/.next/*
-/npm-debug.log
+/**/npm-debug.log
