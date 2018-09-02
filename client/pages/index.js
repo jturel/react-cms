@@ -2,13 +2,14 @@ import Layout from '../components/Layout'
 import Link from 'next/link'
 import fetch from 'isomorphic-unfetch'
 
+
 const Index = (props) => (
   <Layout>
     <h1>The Posts</h1>
     <ul>
       {props.posts.map((post, i) => (
         <li key={i}>
-          <Link as={`/post/${post.id}`} href={`/post?id=${post.id}`}>
+          <Link href={`/post/${post.id}`}>
             <a>{post.title}</a>
           </Link>
         </li>

@@ -1,16 +1,9 @@
-import Header from './Header'
-
-const layoutStyle = {
-  margin: 20,
-  padding: 20,
-  border: '1px solid #DDD'
-}
+import { Container } from 'reactstrap'
 
 const Layout = (props) => (
-  <div style={layoutStyle}>
-    <Header />
+  <Container>
     {props.children}
-  </div>
+  </Container>
 )
 
 export default Layout
