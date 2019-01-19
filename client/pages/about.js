@@ -3,7 +3,7 @@ import { Tooltip } from 'reactstrap'
 import React from 'react'
 
 
-export default class Example extends React.Component {
+export default class About extends React.Component {
   constructor(props) {
     super(props);
 
