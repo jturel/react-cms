@@ -1,21 +1,17 @@
-import 'bootstrap/dist/css/bootstrap.css';
-import Navigation from '../components/Navigation'
+import 'bootstrap/dist/css/bootstrap.css'
 import App, {Container} from 'next/app'
 import Head from 'next/head'
-import React from 'react'
 
 export default class ReactCms extends App {
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {};
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {}
 
     if (Component.getInitialProps) {
-      pageProps = await Component.getInitialProps(ctx);
-
+      pageProps = await Component.getInitialProps(ctx)
     }
 
     return { pageProps }
   }
-
 
   render() {
     const {Component, pageProps} = this.props
@@ -26,7 +22,7 @@ export default class ReactCms extends App {
         <title>foo</title>
       </Head>
       <Component {...pageProps} />
-      </Container>
+    </Container>
     )
   }
 }

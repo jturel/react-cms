@@ -1,7 +1,4 @@
 import {
-  Collapse,
-  Tooltip,
-  Container,
   NavbarBrand,
   Nav,
   NavItem, 
@@ -10,25 +7,24 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarToggler } from 'reactstrap'
+  DropdownItem } from 'reactstrap'
 import Link from 'next/link'
 import React from 'react'
 
 export default class Navigation extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.toggle = this.toggle.bind(this);
+    this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: true
-    };
+    }
   }
 
   toggle() {
     this.setState({
       isOpen: !this.state.isOpen
-    });
+    })
   }
 
   render() {
