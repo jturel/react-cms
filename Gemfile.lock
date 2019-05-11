@@ -43,7 +43,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
-    bootsnap (1.4.3)
+    bootsnap (1.4.4)
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
@@ -75,10 +75,11 @@ GEM
     minitest (5.11.3)
     msgpack (1.2.10)
     nio4r (2.3.1)
-    nokogiri (1.10.2)
+    nokogiri (1.10.3)
       mini_portile2 (~> 2.4.0)
     puma (3.12.1)
     rack (2.0.7)
+    rack-cors (1.0.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.3)
@@ -122,7 +123,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.0)
+    sqlite3 (1.4.1)
     thor (0.19.4)
     thread_safe (0.3.6)
     tzinfo (1.2.5)
@@ -140,6 +141,7 @@ DEPENDENCIES
   foreman
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
+  rack-cors
   rails (~> 5.2.1)
   spring
   spring-watcher-listen (~> 2.0.0)
