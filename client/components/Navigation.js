@@ -30,7 +30,7 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <Navbar color="light" light expand="md">
-        <Link href="/" passHref>
+        <Link href="/">
           <NavbarBrand>react cms</NavbarBrand>
         </Link>
         <Nav navbar>
@@ -45,12 +45,12 @@ export default class Navigation extends React.Component {
             </DropdownMenu>
           </UncontrolledDropdown>
           <NavItem>
-            <Link href="/sites" passHref>
+            <Link href="/sites">
               <NavLink>Sites</NavLink>
             </Link>
           </NavItem>
           <NavItem>
-            <Link href="/about" passHref>
+            <Link href="/about">
               <NavLink>About</NavLink>
             </Link>
           </NavItem>
