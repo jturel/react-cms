@@ -1,3 +1,4 @@
+import Layout from '../components/Layout'
 import React from 'react'
 
 class Error extends React.Component {
@@ -8,11 +9,14 @@ class Error extends React.Component {
 
   render() {
     return (
-      <p>
-        {this.props.statusCode
-          ? ` we got return code ${this.props.statusCode }`
-          : ' client error '}
-      </p>
+      <Layout>
+        <h1>Something went wrong</h1>
+        <p>
+          {this.props.statusCode
+            ? ` we got return code ${this.props.statusCode }`
+            : ' client error '}
+        </p>
+      </Layout>
     )
   }
 }

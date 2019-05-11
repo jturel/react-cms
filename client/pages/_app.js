@@ -19,7 +19,7 @@ export default class ReactCms extends App {
       <Head>
         <link rel="stylesheet" href="/_next/static/style.css" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <title>foo</title>
+        <title>react-cms</title>
       </Head>
       <Component {...pageProps} />
     </Container>
