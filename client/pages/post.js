@@ -1,5 +1,5 @@
-import fetch from 'isomorphic-unfetch'
 import Layout from '../components/Layout.js'
+import {getPost} from '../api/posts'
 
 const Post = ({post}) => (
   <Layout>
@@ -9,7 +9,7 @@ const Post = ({post}) => (
 )
 
 Post.getInitialProps =  async function({query}) {
-  const response = await fetch(`http://localhost:3001/api/v1/posts/${query.id}`)
+  const response = await getPost(query.id)
   const post = await response.json()
 
   return {
