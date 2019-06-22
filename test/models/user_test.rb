@@ -1,7 +1,10 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_authenticate
+    user = users(:one)
+    user.password = 'newpassword'
+
+    assert user.authenticate('newpassword')
+  end
 end

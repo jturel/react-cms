@@ -1,14 +1,14 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  login: MyString
+  login: userone
   first_name: MyString
   last_name: MyString
   email: MyString
-  password_digest: MyString
+  password_digest: $2a$04$7iA3G1OzgSbTM5ktb1lpfO..EujguuiHklJcjSH1dPzn1nfN0ayeG
 
 two:
-  login: MyString
+  login: usertwo
   first_name: MyString
   last_name: MyString
   email: MyString
