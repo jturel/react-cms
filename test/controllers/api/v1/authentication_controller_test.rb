@@ -9,6 +9,14 @@ class Api::V1::AuthenticationControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  def test_authenticate_invalid_password
+    user = users(:one)
+
+    post api_v1_authenticate_url, params: {login: user.login, password: "wrong"}
+
+    assert_equal 403, response.status
+  end
+
   def test_authenticate_inexistent
     post api_v1_authenticate_url, params: {login: "inexistent", password: "mypass"}
 
