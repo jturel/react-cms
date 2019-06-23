@@ -1,7 +1,7 @@
 class Api::V1::AuthenticationController < ApplicationController
   def authenticate
     user = authenticated_user
-    fail(AuthorizationError) unless user
+    fail(AuthenticationError) unless user
 
     token = JsonWebToken.encode({login: user.login})
 

@@ -1,4 +1,6 @@
 class Api::V1::PostsController < ApplicationController
+  before_action :validate_api_token
+
   def index
     posts = Post.all
 
