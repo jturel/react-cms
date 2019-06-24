@@ -27,8 +27,10 @@
 /config/master.key
 
 
+/client/package-lock.json
 /client/node_modules/*
 /client/.next/*
 /**/npm-debug.log
+
 Gemfile.lock
 vendor/bundle
