@@ -31,3 +31,4 @@
 /client/.next/*
 /**/npm-debug.log
 Gemfile.lock
+vendor/bundle
