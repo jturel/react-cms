@@ -30,3 +30,4 @@
 /client/node_modules/*
 /client/.next/*
 /**/npm-debug.log
+Gemfile.lock
