@@ -6,10 +6,21 @@ const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
+function authenticateRequest(req, res, next) {
+  if (true) {
+    return res.redirect('/login');
+  } 
+  return next();
+}
+
 app.prepare()
   .then(() => {
     const server = express()
     server.use(cors())
+
+    server.get('/login', (req, res) => {
+      app.render(req, res, '/login')
+    })
 
     server.get('/post/:id', (req, res) => {
       const actualPage = '/post'
@@ -17,7 +28,7 @@ app.prepare()
       app.render(req, res, actualPage, queryParams)
     })
 
-    server.get('*', (req, res) => {
+    server.get('*', authenticateRequest, (req, res) => {
       return handle(req, res)
     })
 
