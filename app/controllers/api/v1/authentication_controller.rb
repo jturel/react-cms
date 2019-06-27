@@ -8,6 +8,12 @@ class Api::V1::AuthenticationController < ApplicationController
     render json: token
   end
 
+  def check_token
+    decoded_auth_token
+
+    render json: 'ok'
+  end
+
   private
 
   def auth_params

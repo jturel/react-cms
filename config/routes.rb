@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :posts, only: [:index, :show]
 
       post 'authenticate', to: 'authentication#authenticate'
+      get 'check_token', to: 'authentication#check_token'
     end
   end
 end

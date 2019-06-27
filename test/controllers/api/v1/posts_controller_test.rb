@@ -8,7 +8,7 @@ class Api::V1::PostsControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_index_authed
-    token = JsonWebToken.encode({login: 'userone', password: 'test'})
+    token = JsonWebToken.encode(login: 'userone')
 
     get api_v1_posts_url, headers: {'Authorization' => token}
 

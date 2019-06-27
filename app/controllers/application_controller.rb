@@ -11,11 +11,15 @@ class ApplicationController < ActionController::API
   end
 
   def validate_api_token
-    payload = JsonWebToken.decode(auth_token)
+    payload = decoded_auth_token
     login = payload[:login]
     user = User.find_by_login(login)
 
     fail(AuthenticationError) if user.nil?
+  end
+
+  def decoded_auth_token
+    JsonWebToken.decode(auth_token)
   end
 
   def auth_token

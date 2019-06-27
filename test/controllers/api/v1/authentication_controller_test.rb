@@ -22,4 +22,24 @@ class Api::V1::AuthenticationControllerTest < ActionDispatch::IntegrationTest
 
     assert_equal 403, response.status
   end
+
+  def test_check_token_valid
+    token = JsonWebToken.encode(login: 'userone')
+
+    get api_v1_check_token_url, headers: {'Authorization' => token}
+
+    assert_response :success
+  end
+
+  def test_check_token_invalid
+    get api_v1_check_token_url, headers: {'Authorization' => "invalid"}
+
+    assert_equal 403, response.status
+  end
+
+  def test_check_token_missing
+    get api_v1_check_token_url
+
+    assert_equal 403, response.status
+  end
 end
