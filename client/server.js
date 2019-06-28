@@ -2,26 +2,12 @@ const fetch = require('isomorphic-unfetch')
 const express = require('express')
 const next = require('next')
 const cors = require('cors')
+const middleware = require('./middleware')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-function authenticateRequest(req, res, next) {
-    fetch('http://localhost:3001/api/v1/check_token', {
-        method: 'GET',
-        headers: {
-          'Authorization': ''
-        }
-    }).then(r => {
-        if (r.status === 403) {
-          console.log("403 at " + req.path);
-          return res.redirect('/login');
-        }
-
-        return next();
-    })
-}
 
 app.prepare()
   .then(() => {
@@ -43,7 +29,7 @@ app.prepare()
       app.render(req, res, actualPage, queryParams)
     })
 
-    server.get('/*', authenticateRequest, (req, res) => {
+    server.get('/*', middleware.authenticateRequest, (req, res) => {
       return handle(req, res)
     })
 
