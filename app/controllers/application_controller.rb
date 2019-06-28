@@ -7,7 +7,7 @@ class ApplicationController < ActionController::API
   private
 
   def unauthorized(error)
-    render json: "you are not authorized", status: 403
+    render json: {error: "you are not authorized"}, status: 403
   end
 
   def validate_api_token

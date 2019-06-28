@@ -5,7 +5,7 @@ class Api::V1::AuthenticationController < ApplicationController
 
     token = JsonWebToken.encode({login: user.login})
 
-    render json: token
+    render json: {token: token}
   end
 
   def check_token

@@ -7,7 +7,7 @@ const Index = (props) => (
   <Layout>
     <h1>The Posts</h1>
     <ul>
-      {props.posts.map((post, i) => (
+      {props.posts.length > 0 && props.posts.map((post, i) => (
         <li key={i}>
           <Link href={`/post/${post.id}`}>
             <a>{post.title}</a>

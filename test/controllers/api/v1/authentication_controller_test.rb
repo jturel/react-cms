@@ -7,6 +7,7 @@ class Api::V1::AuthenticationControllerTest < ActionDispatch::IntegrationTest
     post api_v1_authenticate_url, params: {login: user.login, password: "test"}
 
     assert_response :success
+    assert json_response['token']
   end
 
   def test_authenticate_invalid_password
