@@ -1,19 +1,18 @@
-const fetch = require('isomorphic-unfetch')
 const express = require('express')
 const next = require('next')
-const cors = require('cors')
+//const cors = require('cors')
 const middleware = require('./middleware')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const proxy = require('http-proxy-middleware')
-const morgan = require('morgan')
+//const morgan = require('morgan')
 
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 
-const onProxyReq = function(proxyReq, req, res) {
+const onProxyReq = function(proxyReq, req) {
   const token = req.session.react_cms_api_token
 
   if (token) {
@@ -36,7 +35,7 @@ app.prepare()
       resave: false,
       saveUninitialized: false,
       cookie: {
-	  expires: 600000,
+        expires: 600000,
       }
     }))
 
