@@ -30,6 +30,7 @@ class ApplicationController < ActionController::API
   end
 
   def authorization_header
-    request.headers['Authorization']
+    # http-proxy-middleware changes auth header to the latter
+    request.headers['Authorization'] || request.headers['HTTP_AUTHENTICATION']
   end
 end
