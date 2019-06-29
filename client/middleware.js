@@ -1,3 +1,5 @@
+const fetch = require('isomorphic-unfetch')
+
 exports.authenticateRequest = function(req, res, next) {
   const token = req.session.react_cms_api_token
 
