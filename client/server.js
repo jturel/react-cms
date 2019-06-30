@@ -5,7 +5,7 @@ const middleware = require('./middleware')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const proxy = require('http-proxy-middleware')
-//const morgan = require('morgan')
+const morgan = require('morgan')
 
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -58,9 +58,8 @@ app.prepare()
       })
 
     server.get('/post/:id', middleware.authenticateRequest, (req, res) => {
-      const actualPage = '/post'
       const queryParams = { id: req.params.id }
-      app.render(req, res, actualPage, queryParams)
+      return app.render(req, res, '/post', queryParams)
     })
 
     server.get('/*', middleware.authenticateRequest, (req, res) => {

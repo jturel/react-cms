@@ -8,8 +8,9 @@ const Post = ({post}) => (
   </Layout>
 )
 
-Post.getInitialProps =  async function({query}) {
-  const response = await getPost(query.id)
+Post.getInitialProps = async function({req, query}) {
+  const cookie = req.headers.cookie // always a hard refresh on here due to server side render
+  const response = await getPost(query.id, cookie)
   const post = await response.json()
 
   return {
