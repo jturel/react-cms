@@ -26,6 +26,7 @@ const onProxyReq = function(proxyReq, req) {
 app.prepare()
   .then(() => {
     const server = express()
+
     //server.use(cors())
     server.use(bodyParser.urlencoded({ extended: true }))
     //server.use(morgan())
@@ -59,10 +60,10 @@ app.prepare()
 
     server.get('/post/:id', middleware.authenticateRequest, (req, res) => {
       const queryParams = { id: req.params.id }
-      return app.render(req, res, '/post', queryParams)
+      app.render(req, res, '/post', queryParams)
     })
 
-    server.get('/*', middleware.authenticateRequest, (req, res) => {
+    server.get('*', middleware.authenticateRequest, (req, res) => {
       return handle(req, res)
     })
 

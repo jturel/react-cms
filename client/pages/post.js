@@ -9,7 +9,7 @@ const Post = ({post}) => (
 )
 
 Post.getInitialProps = async function({req, query}) {
-  const cookie = req.headers.cookie // always a hard refresh on here due to server side render
+  const cookie = (req && req.headers) ? req.headers.cookie : null // handle both client & server rendering
   const response = await getPost(query.id, cookie)
   const post = await response.json()
 

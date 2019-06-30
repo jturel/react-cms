@@ -9,7 +9,7 @@ const Index = (props) => (
     <ul>
       {props.posts.length > 0 && props.posts.map((post, i) => (
         <li key={i}>
-          <Link href={`/post/${post.id}`} passHref>
+          <Link as={`/post/${post.id}`} href={`/post?id=${post.id}`}>
             <a>{post.title}</a>
           </Link>
         </li>
@@ -19,7 +19,7 @@ const Index = (props) => (
 )
 
 Index.getInitialProps = async function({req}) {
-  const cookie = (req && req.headers) ? req.headers.cookie : null // we might not have the req if client side rendered
+  const cookie = (req && req.headers) ? req.headers.cookie : null // handle both client & server rendering
   const response = await getPosts(cookie)
   const posts = await response.json()
 
