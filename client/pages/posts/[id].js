@@ -1,5 +1,5 @@
-import Layout from '../components/Layout.js'
-import {getPost} from '../api/posts'
+import Layout from '../../components/Layout.js'
+import {getPost} from '../../api/posts'
 
 const Post = ({post}) => (
   <Layout>
@@ -9,7 +9,7 @@ const Post = ({post}) => (
 )
 
 Post.getInitialProps = async function({req, query}) {
-  const cookie = (req && req.headers) ? req.headers.cookie : null // handle both client & server rendering
+  const cookie = req?.headers?.cookie;
   const response = await getPost(query.id, cookie)
   const post = await response.json()
 

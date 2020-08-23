@@ -58,10 +58,10 @@ app.prepare()
         middleware.doLogin(req, res)
       })
 
-    server.get('/post/:id', middleware.authenticateRequest, (req, res) => {
-      const queryParams = { id: req.params.id }
-      app.render(req, res, '/post', queryParams)
-    })
+    server.route('/logout')
+      .get((req, res) => {
+        return handle(req, res)
+      })
 
     server.get('*', middleware.authenticateRequest, (req, res) => {
       return handle(req, res)

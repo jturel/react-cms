@@ -45,6 +45,11 @@ export default class Navigation extends React.Component {
             </DropdownMenu>
           </UncontrolledDropdown>
           <NavItem>
+            <Link href="/posts">
+              <NavLink>Posts</NavLink>
+            </Link>
+          </NavItem>
+          <NavItem>
             <Link href="/sites">
               <NavLink>Sites</NavLink>
             </Link>
