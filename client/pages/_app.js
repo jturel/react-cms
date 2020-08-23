@@ -1,18 +1,19 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import App from 'next/app'
-import Head from 'next/head'
 import React from 'react'
+import { AuthProvider } from '../components/AuthContext'
+import PropTypes from 'prop-types'
 
-export default class ReactCms extends App {
-  render() {
-    const {Component, pageProps} = this.props
-    return (
-      <React.Fragment>
-        <Head>
-          <title>react-cms</title>
-        </Head>
-        <Component {...pageProps} />
-      </React.Fragment>
-    )
-  }
+function ReactCms({ Component, pageProps }) {
+  return (
+    <AuthProvider>
+      <Component {...pageProps} />
+    </AuthProvider>
+  )
 }
+
+ReactCms.propTypes = {
+  Component: PropTypes.any,
+  pageProps: PropTypes.object,
+}
+
+export default ReactCms
