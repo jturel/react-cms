@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css'
 import App from 'next/app'
 import Head from 'next/head'
+import React from 'react'
 
 export default class ReactCms extends App {
   /*

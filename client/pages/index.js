@@ -1,7 +1,7 @@
 import Layout from '../components/Layout'
-import Link from 'next/link'
+import React from 'react'
 
-const Index = (props) => (
+const Index = () => (
   <Layout>
     <div>Hello!</div>
   </Layout>

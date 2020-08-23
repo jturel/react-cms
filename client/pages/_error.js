@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Error extends React.Component {
   static getInitialProps({ res, err }) {
@@ -19,6 +20,10 @@ class Error extends React.Component {
       </Layout>
     )
   }
+}
+
+Error.propTypes = {
+  statusCode: PropTypes.number
 }
 
 export default Error

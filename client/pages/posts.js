@@ -1,6 +1,8 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
 import {getPosts} from '../api/posts'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Posts = (props) => (
   <Layout>
@@ -18,13 +20,15 @@ const Posts = (props) => (
 )
 
 Posts.getInitialProps = async function({req}) {
-  const cookie = req?.headers?.cookie;
+  const cookie = req?.headers?.cookie
   const response = await getPosts(cookie)
   const posts = await response.json()
 
-  return {
-    posts: posts
-  }
+  return { posts }
+}
+
+Posts.propTypes = {
+  posts: PropTypes.array
 }
 
 export default Posts

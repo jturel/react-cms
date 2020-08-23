@@ -1,6 +1,5 @@
 import { Button, Form, FormGroup, Label, Input, Container, Jumbotron } from 'reactstrap'
 import React from 'react'
-import Router from 'next/router'
 
 export default class Login extends React.Component {
   constructor(props) {
@@ -8,7 +7,7 @@ export default class Login extends React.Component {
     this.state = { username: '', password: '' }
   }
 
-  onChange = (event) => {
+  onChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     })

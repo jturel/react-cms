@@ -29,7 +29,11 @@ app.prepare()
 
     //server.use(cors())
     server.use(bodyParser.urlencoded({ extended: true }))
-    //server.use(morgan())
+    server.use(morgan('tiny', {
+      skip: function(req) {
+        return req.url.match(/_next*/)
+      },
+    }))
 
     server.use(session({
       secret: 'SUPERSECRET',
@@ -58,10 +62,9 @@ app.prepare()
         middleware.doLogin(req, res)
       })
 
-    server.route('/logout')
-      .get((req, res) => {
-        return handle(req, res)
-      })
+    server.get('/logout', middleware.doLogout, (req, res) => {
+      return handle(req, res)
+    })
 
     server.get('*', middleware.authenticateRequest, (req, res) => {
       return handle(req, res)
