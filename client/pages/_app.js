@@ -1,8 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import App, {Container} from 'next/app'
+import App from 'next/app'
 import Head from 'next/head'
 
 export default class ReactCms extends App {
+  /*
   static async getInitialProps({ Component, ctx }) {
     let pageProps = {}
 
@@ -12,17 +13,18 @@ export default class ReactCms extends App {
 
     return { pageProps }
   }
-
+*/
   render() {
     const {Component, pageProps} = this.props
-    return (<Container>
-      <Head>
-        <link rel="stylesheet" href="/_next/static/style.css" />
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-        <title>react-cms</title>
-      </Head>
-      <Component {...pageProps} />
-    </Container>
+    return (
+      <React.Fragment>
+        <Head>
+          <link rel="stylesheet" href="/_next/static/style.css" />
+          <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+          <title>react-cms</title>
+        </Head>
+        <Component {...pageProps} />
+      </React.Fragment>
     )
   }
 }
