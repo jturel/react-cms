@@ -59,6 +59,11 @@ export default class Navigation extends React.Component {
               <NavLink>About</NavLink>
             </Link>
           </NavItem>
+          <NavItem>
+            <Link href="/logout">
+              <NavLink>Log out</NavLink>
+            </Link>
+          </NavItem>
         </Nav>
       </Navbar>
     )

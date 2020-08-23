@@ -11,7 +11,7 @@ const Layout = (props) => (
 )
 
 Layout.propTypes = {
-  children: PropTypes.object
+  children: PropTypes.any // this can be an array or object
 }
 
 export default Layout

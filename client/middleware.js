@@ -14,6 +14,7 @@ exports.authenticateRequest = function(req, res, next) {
     }
   }).then(r => {
     if (!r.ok) {
+      console.log('redir from authreq')
       return res.redirect('/login')
     }
     return next()
@@ -33,6 +34,7 @@ exports.doLogin = function(req, res) {
     })
   }).then(r => {
     if (!r.ok) {
+      console.log('res not OK')
       return res.redirect('/login')
     }
     return r.json()
@@ -45,7 +47,8 @@ exports.doLogin = function(req, res) {
 }
 
 exports.doLogout = function(req, res, next) {
-  req.session.react_cms_api_token = null
+  console.log('logging out')
+  req.session = null
 
   return next()
 }

@@ -1,7 +1,7 @@
 const express = require('express')
 const next = require('next')
 //const cors = require('cors')
-const middleware = require('./middleware')
+//const middleware = require('./middleware')
 const bodyParser = require('body-parser')
 const session = require('express-session')
 const proxy = require('http-proxy-middleware')
@@ -50,13 +50,19 @@ app.prepare()
     )
 
     // don't authenticate nextjs assets
+/*
     server.get('/_next/*', (req, res) => {
       return handle(req, res)
     })
-
     server.route('/login')
       .get((req, res) => {
-        return handle(req, res)
+        if (req.session.react_cms_api_token) {
+          console.log('had a token')
+          return res.redirect('/')
+        } else {
+          console.log('handling login')
+          return handle(req, res)
+        }
       })
       .post((req, res) => {
         middleware.doLogin(req, res)
@@ -65,8 +71,10 @@ app.prepare()
     server.get('/logout', middleware.doLogout, (req, res) => {
       return handle(req, res)
     })
+    */
 
-    server.get('*', middleware.authenticateRequest, (req, res) => {
+    server.get('*', (req, res) => {
+    //server.get('*', middleware.authenticateRequest, (req, res) => {
       return handle(req, res)
     })
 
