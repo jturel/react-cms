@@ -3,22 +3,21 @@ const fetch = require('isomorphic-unfetch')
 exports.authenticateRequest = function(req, res, next) {
   const token = req.session.react_cms_api_token
 
-  if (!token) {
-    return res.redirect('/login')
+  if (token) {
+    fetch('http://localhost:3000/api/v1/check_token', {
+      method: 'GET',
+      headers: {
+        'Authorization': token
+      }
+    }).then(r => {
+      if (!r.ok) {
+        console.log('redir from authreq')
+        return res.redirect('/login')
+      }
+    })
   }
 
-  fetch('http://localhost:3000/api/v1/check_token', {
-    method: 'GET',
-    headers: {
-      'Authorization': token
-    }
-  }).then(r => {
-    if (!r.ok) {
-      console.log('redir from authreq')
-      return res.redirect('/login')
-    }
-    return next()
-  })
+  return next()
 }
 
 exports.doLogin = function(req, res) {
@@ -41,14 +40,15 @@ exports.doLogin = function(req, res) {
   }).then(payload => {
     if (payload && payload.token) {
       req.session.react_cms_api_token = payload.token
-      return res.redirect('/')
     }
+    return res.redirect('/')
   })
 }
 
 exports.doLogout = function(req, res, next) {
-  console.log('logging out')
-  req.session = null
+  if (req.session) {
+    req.session.destroy()
+  }
 
   return next()
 }

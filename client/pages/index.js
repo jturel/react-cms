@@ -1,5 +1,6 @@
 import Layout from '../components/Layout'
 import React from 'react'
+import { withAuth } from '../components/AuthContext'
 
 const Index = () => (
   <Layout>
@@ -7,4 +8,4 @@ const Index = () => (
   </Layout>
 )
 
-export default Index
+export default withAuth(Index)
