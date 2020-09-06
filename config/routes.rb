@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :posts, only: [:index, :show]
+      get 'users/current', to: 'users#current'
 
       post 'authenticate', to: 'authentication#authenticate'
       get 'check_token', to: 'authentication#check_token'

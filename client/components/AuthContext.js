@@ -1,12 +1,29 @@
-import React, { createContext, useContext, useEffect } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useRouter } from 'next/router'
+import { getCurrentUser } from '../api/users'
 
 const AuthContext = createContext({});
 
 export const AuthProvider = ({children}) => {
+  const [user, setUser] = useState(null);
+  const [loadingUser, setLoadingUser] = useState(true);
+
+  useEffect (() => {
+    async function setCurrentUser() {
+      const data = await getCurrentUser();
+
+      if(!data.error) {
+        setUser(data);
+      }
+
+      setLoadingUser(false);
+    }
+    setCurrentUser();
+  }, []);
+
   return (
-    <AuthContext.Provider value={{ user: null }}>
+    <AuthContext.Provider value={{ user, loadingUser }}>
       {children}
     </AuthContext.Provider>
   )
@@ -18,21 +35,23 @@ AuthProvider.propTypes = {
 
 export function withAuth(Component) {
   return () => {
-    const { user } = useAuth()
+    const { user, loadingUser } = useAuth()
     const router = useRouter()
 
     useEffect(() => {
-      if (!user) {
-        console.log("no user, redirecting")
+      if (!loadingUser && !user) {
         router.push('/login')
       }
-    }, [user])
+    }, [user, loadingUser])
 
+    /*
     if (user) {
       return <Component/>
     } else {
       return null
     }
+    */
+    return <Component/>
   }
 }
 

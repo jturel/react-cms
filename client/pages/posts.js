@@ -1,6 +1,5 @@
 import Layout from '../components/Layout'
 import Link from 'next/link'
-//import {getPosts} from '../api/posts'
 import React from 'react'
 import useSWR from 'swr'
 import fetch from 'isomorphic-unfetch'

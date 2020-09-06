@@ -6,6 +6,12 @@ class ApplicationController < ActionController::API
 
   private
 
+  def current_user
+    payload = decoded_auth_token
+    login = payload[:login]
+    User.find_by_login!(login)
+  end
+
   def unauthorized(error)
     render json: {error: "you are not authorized"}, status: 403
   end

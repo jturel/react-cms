@@ -27,7 +27,7 @@ export default class Login extends React.Component {
               <Label for="Password">Password</Label>
               <Input type="password" name="password" onChange={this.onChange} value={this.state.password} />
               <br />
-              <Button>Log in</Button>
+              <Button id="loginButton">Log in</Button>
             </FormGroup>
           </Form>
         </Jumbotron>
